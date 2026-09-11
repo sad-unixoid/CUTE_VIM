@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-REPO_URL="https://github.com/lastconfig/CUTE_VIM.git"
+REPO_URL="https://github.com/lostconfig/CUTE_VIM.git"
 BRANCH="main"                                     
 DIR="$HOME/CUTE_VIM"
 CLONE_DIR="$HOME/.vim_config_backup"

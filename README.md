@@ -1,6 +1,6 @@
 ## My Awesome Vim Configuration
 
-![.vimrc](https://github.com/Sergo3425/CUTE_VIM/blob/main/image/cute-vim.png)
+![.vimrc](https://github.com/Sergo3425/CUTE_VIM/blob/main/image/vim.png)
 
 ## Installation
 ```

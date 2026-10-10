@@ -73,8 +73,8 @@ let g:startify_bookmarks = [
 
 let g:startify_session_autoload = 1
 "let g:startify_bookmarks = [
-      \ {                'i': '~/.vimrc' },
-      \ {                't': '~/projects' }
+      \ { 'i': '~/.vimrc' },
+      \ { 't': '~/projects' }
       \]
 
 " highlight current line

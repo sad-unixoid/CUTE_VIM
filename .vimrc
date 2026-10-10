@@ -67,7 +67,7 @@ endfunction
 
 let g:startify_bookmarks = [
       \ { 'c': '~/.vimrc' },
-      \ { 'g': '~/my_project/src/main.go' },
+      \ { 'g': '~/projects' },
       \ { 'd': '~/Documents/' },
       \ ]
 

@@ -1,19 +1,21 @@
-"	                                             __
-"	_____   __  __  _______  _____       __  __ /\_\    ___ ___
+"	                                              __
+"	 _____   __  __  _______  _____       __  __ /\_\    ___ ___
 "	/\  __\ /\ \/\ \/\__  __\/\  _ \     /\ \/\ \\/\ \  / __` __`\
-"	\ \ \___\ \ \_\ \__/\ \_/\ \ \\/_    \ \ \_\ \\ \ \/\ \/\ \/\ \
-"  \ \____\\ \_____\ \ \_\  \ \____\    \ \____/ \ \_\ \_\ \_\ \_\
-"   \_____/ \/_____/  \/_/   \/____/     \/___/   \/_/\/_/\/_/\/_/
+"	\ \ \___\ \ \_\ \__/\ \_/\ \ \\/_    \ \ \_\ \\ \ \/\ \/\ \/\ \ 
+"    \ \____\\ \_____\ \ \_\  \ \____\    \ \____/ \ \_\ \_\ \_\ \_\
+"     \_____/ \/_____/  \/_/   \/____/     \/___/   \/_/\/_/\/_/\/_/
 "
 
-colorscheme 256_noir
+colorscheme catppuccin 
 
-let ayucolor="dark"
+let g:NERDTreeGitStatusWithFlags = 1
+highlight Normal ctermbg=None
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'default'
 
-augroup TransparentBg
-  autocmd!
-  autocmd ColorScheme * hi Normal ctermbg=none guibg=NONE
-augroup END
+" augroup TransparentBg
+" autocmd VimEnter * belowright terminal ++rows=4
+" augroup END
 
 call plug#begin('~/.vim/plugged')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -24,16 +26,17 @@ call plug#begin('~/.vim/plugged')
   Plug 'rhysd/vim-clang-format'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'projekt0n/github-nvim-theme'
   Plug 'jiangmiao/auto-pairs'
   Plug 'ayu-theme/ayu-vim'
   Plug 'KabbAmine/vCoolor.vim'
-  Plug 'frazrepo/vim-rainbow'
   Plug 'nordtheme/vim'
   Plug 'rhysd/vim-clang-format'
   Plug 'mcgain/vim-compiler'
   Plug 'powerman/vim-plugin-ruscmd'
   Plug 'tpope/vim-commentary'
   Plug 'preservim/tagbar'
+  Plug 'morhetz/gruvbox'
 call plug#end()
 
 
@@ -67,14 +70,15 @@ endfunction
 
 let g:startify_bookmarks = [
       \ { 'c': '~/.vimrc' },
-      \ { 'g': '~/projects' },
+      \ { 'g': '~/projects/' },
       \ { 'd': '~/Documents/' },
+      \ { 'a': '~/iso/' },
       \ ]
 
 let g:startify_session_autoload = 1
 "let g:startify_bookmarks = [
-      \ { 'i': '~/.vimrc' },
-      \ { 't': '~/projects' }
+      \ {                'i': '~/.vimrc' },
+      \ {                't': '~/projects' }
       \]
 
 " highlight current line
@@ -82,14 +86,14 @@ au WinLeave * set nocursorline
 au WinEnter * set cursorline 
 set cursorline 
 
-syntax on
-syntax enable
-filetype plugin indent on
+" syntax on
+" syntax enable
+" filetype plugin indent on
 
 set number
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set expandtab
 set autoindent
 set noswapfile
@@ -100,8 +104,8 @@ set showcmd
 set showmatch
 set foldmethod=syntax
 set foldlevelstart=99
-set list
-set listchars=tab:>>-
+" set list
+" set listchars=tab:..
 
 set ignorecase
 set hlsearch
@@ -109,6 +113,10 @@ set incsearch
 set scrolloff=4
 set clipboard=unnamedplus
 
+set mouse=a
+set expandtab
+set laststatus=2
+set statusline+=%F
 
 "autocmd BufWritePre * :%s/\s\+$//e
 
@@ -117,9 +125,10 @@ set clipboard=unnamedplus
 " ======================plug setting==========================
 " ============================================================
 
-let g:airline_theme='base16_ashes'
 let g:ale_cpp_clang_tidy_options = '-checks=*'
 let g:ale_cpp_gcc_options = '-std=c++17 -Wall -Wextra -Werror'
+let g:airline_theme='dark'
+let g:airline_powerline_fonts = 1
 
 filetype plugin indent on
 
@@ -142,18 +151,6 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 
-"===========================rainbow===========================
-let g:rainbow_active = 1
-let g:rainbow_load_separately = [
-      \ [ '*' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
-      \ [ '*.tex' , [['(', ')'], ['\[', '\]']] ],
-      \ [ '*.cpp' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
-      \ [ '*.{html,htm}' , [['(', ')'], ['\[', '\]'], ['{', '}'], ['<\a[^>]*>', '</[^>]*>']] ],
-      \ ]
-
-let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
-let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
-
 "===========================NerdTREE==========================
 "autocmd VimEnter * NERDTree
 
@@ -172,11 +169,10 @@ xnoremap p "_dP
 nnoremap cd diwi
 nnoremap ca vbdi
 
-nmap <leader>n :NERDTreeFocus<CR>
-nmap <C-n> :NERDTreeFind<CR>
+nmap <C-n> :NERDTree<CR>
 
 nnoremap <Space><Space> :noh<CR>diwi
-nnoremap <Space> :noh<CR>
+nnoremap <Space><Esc> :noh<CR>
 
 nnoremap <C-F2> :e ~/.vimrc<CR>
 nnoremap <C-F3> :e ~/.config/i3/config
@@ -187,3 +183,8 @@ nnoremap <Space>n :tabnew<CR>
 nnoremap <Space>w :tabclose<CR>
 nnoremap <Space>o :tabnext<CR>
 nnoremap <Space>i :tabprevious<CR>
+nnoremap <Space>t :bel terminal<CR><C-w>18-
+
+"java
+inoremap !PP System.out.println("")<Left><Left>
+inoremap !P System.out.print("")<Left><Left>
